@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+    <h2>Registration Form</h2>
+
+<form>
+
+    <!-- Name -->
+    <label>Name:</label><br>
+    <input type="text" name="name" placeholder="Enter your name" required>
+    <br><br>
+
+    <!-- Email -->
+    <label>Email:</label><br>
+    <input type="email"
+           name="email"
+           placeholder="Enter your email"
+           pattern=".+@.+\..+"
+           title="Email must contain @ symbol"
+           required>
+    <br><br>
+
+    <!-- Password -->
+<label>Password:</label><br>
+<input type="password"
+       name="password"
+       placeholder="Enter password"
+       pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{6,}"
+       title="Password must contain uppercase, lowercase letters and numbers (minimum 6 characters)"
+       required>
+<br><br>
+
+<!-- Confirm Password -->
+<label>Confirm Password:</label><br>
+<input type="password"
+       name="confirm_password"
+       placeholder="Re-enter password"
+       pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{6,}"
+       title="Password must contain uppercase, lowercase letters and numbers"
+       required>
+<br><br>
+
+
+    <!-- Gender -->
+    <label>Gender:</label><br>
+    <input type="radio" name="gender" value="male" required> Male
+    <input type="radio" name="gender" value="female"> Female
+    <input type="radio" name="gender" value="other"> Other
+    <br><br>
+
+    <!-- Address -->
+    <label>Address:</label><br>
+    <textarea name="address"
+              rows="4"
+              cols="30"
+              placeholder="Enter your address"
+              required></textarea>
+    <br><br>
+
+    <!-- Submit -->
+    <input type="submit" value="Register">
+
+</form>
+
+</body>
+</html>
