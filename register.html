@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SkillSwap | Register</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+<div class="logo">SkillSwap</div>
+<div class="nav-links">
+<a href="login.html">Login</a>
+</div>
+</nav>
+
+<div class="container">
+<div class="form-card">
+
+<h2>Create Account</h2>
+
+<form id="registerForm">
+
+<input type="text" id="name" placeholder="Full Name">
+
+<input type="email" id="email" placeholder="Email">
+
+<input type="password" id="password" placeholder="Password">
+
+<input type="password" id="confirmPassword" placeholder="Confirm Password">
+
+<select id="skillOffer">
+<option value="">Skill You Can Teach</option>
+<option>Python</option>
+<option>Java</option>
+<option>Web Development</option>
+</select>
+
+<select id="skillWant">
+<option value="">Skill You Want to Learn</option>
+<option>React</option>
+<option>Machine Learning</option>
+<option>Cyber Security</option>
+</select>
+
+<button type="submit">Register</button>
+
+</form>
+
+<p>Already have account? <a href="login.html">Login</a></p>
+
+</div>
+</div>
+
+<script>
+document.getElementById("registerForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+let name=document.getElementById("name").value.trim();
+let email=document.getElementById("email").value.trim();
+let password=document.getElementById("password").value;
+let confirmPassword=document.getElementById("confirmPassword").value;
+let skillOffer=document.getElementById("skillOffer").value;
+let skillWant=document.getElementById("skillWant").value;
+
+let emailPattern=/^[a-zA-Z0-9._%+-]+@.+\.edu$/;
+let passPattern=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
+
+if(name===""||email===""||password===""||confirmPassword===""){
+alert("All fields are required");
+return;
+}
+
+if(!emailPattern.test(email)){
+alert("Enter valid .edu email");
+return;
+}
+
+if(!passPattern.test(password)){
+alert("Password must contain Uppercase, Lowercase and Number");
+return;
+}
+
+if(password!==confirmPassword){
+alert("Passwords do not match");
+return;
+}
+
+if(skillOffer===""||skillWant===""){
+alert("Select both skills");
+return;
+}
+
+localStorage.setItem("ss_name",name);
+localStorage.setItem("ss_password",password);
+
+alert("Registration Successful 🎉");
+window.location.href="login.html";
+
+});
+</script>
+
+</body>
+</html>
