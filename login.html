@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SkillSwap | Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+<div class="logo">SkillSwap</div>
+<div class="nav-links">
+<a href="register.html">Sign Up</a>
+</div>
+</nav>
+
+<div class="container">
+<div class="form-card">
+
+<h2>Login</h2>
+
+<form id="loginForm">
+
+<input type="text" id="loginName" placeholder="Full Name">
+
+<input type="password" id="loginPassword" placeholder="Password">
+
+<button type="submit">Login</button>
+
+</form>
+
+<p>New user? <a href="register.html">Create Account</a></p>
+
+</div>
+</div>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+let name=document.getElementById("loginName").value.trim();
+let password=document.getElementById("loginPassword").value;
+
+let storedName=localStorage.getItem("ss_name");
+let storedPassword=localStorage.getItem("ss_password");
+
+if(name===""||password===""){
+alert("Enter username and password");
+return;
+}
+
+if(name===storedName && password===storedPassword){
+alert("Welcome "+name+" 🚀");
+window.location.href="browse.html";
+}else{
+alert("Invalid credentials");
+}
+
+});
+</script>
+
+</body>
+</html>
