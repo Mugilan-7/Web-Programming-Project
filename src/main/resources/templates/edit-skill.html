@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Skill - Skill Swap</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤝 Skill Swap Platform</h1>
+            <p>Exchange skills and learn from others</p>
+        </header>
+
+        <div class="form-wrapper">
+            <h2>Edit Your Skill</h2>
+            <form th:action="@{/update/{id}(id=${skill.id})}" th:object="${skill}" method="post" class="skill-form">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" th:field="*{username}" required placeholder="Enter your username">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" th:field="*{email}" required placeholder="Enter your email">
+                </div>
+
+                <div class="form-group">
+                    <label for="offered">Skill You're Offering:</label>
+                    <input type="text" id="offered" th:field="*{offered}" required placeholder="e.g., Python Programming">
+                </div>
+
+                <div class="form-group">
+                    <label for="wanted">Skill You Want to Learn:</label>
+                    <input type="text" id="wanted" th:field="*{wanted}" required placeholder="e.g., Guitar Lessons">
+                </div>
+
+                <div class="form-group">
+                    <label for="level">Proficiency Level:</label>
+                    <select id="level" th:field="*{level}" required>
+                        <option value="Beginner" th:selected="${skill.level == 'Beginner'}">Beginner</option>
+                        <option value="Intermediate" th:selected="${skill.level == 'Intermediate'}">Intermediate</option>
+                        <option value="Advanced" th:selected="${skill.level == 'Advanced'}">Advanced</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Update Skill</button>
+                    <a href="/" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Skill Swap Platform | Share Knowledge, Learn Together</p>
+    </footer>
+</body>
+</html>

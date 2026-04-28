@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Swap - Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤝 Skill Swap Platform</h1>
+            <p>Exchange skills and learn from others</p>
+        </header>
+
+        <div class="actions">
+            <a href="/add" class="btn btn-primary">+ Add New Skill</a>
+        </div>
+
+        <div class="skills-grid">
+            <div th:if="${skills.isEmpty()}" class="empty-state">
+                <p>No skills posted yet. Be the first to share!</p>
+            </div>
+
+            <div th:each="skill : ${skills}" class="skill-card">
+                <div class="skill-header">
+                    <h3 th:text="${skill.username}">Username</h3>
+                    <span class="level" th:classappend="${'level-' + skill.level.toLowerCase()}" th:text="${skill.level}">Level</span>
+                </div>
+
+                <div class="skill-content">
+                    <div class="skill-item">
+                        <strong>📤 Offering:</strong>
+                        <p th:text="${skill.offered}">Offered Skill</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>📥 Looking For:</strong>
+                        <p th:text="${skill.wanted}">Wanted Skill</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>📧 Email:</strong>
+                        <p><a th:href="'mailto:' + ${skill.email}" th:text="${skill.email}">email@example.com</a></p>
+                    </div>
+                </div>
+
+                <div class="skill-actions">
+                    <a th:href="'/edit/' + ${skill.id}" class="btn btn-secondary">Edit</a>
+                    <a th:href="'/delete/' + ${skill.id}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Skill Swap Platform | Share Knowledge, Learn Together</p>
+    </footer>
+</body>
+</html>
